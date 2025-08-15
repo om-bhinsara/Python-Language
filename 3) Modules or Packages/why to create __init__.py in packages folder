@@ -1,0 +1,24 @@
+You create an `__init__.py` file in a package folder to tell Python that the directory should be treated as a **package**. This file is necessary for the directory and its modules to be imported correctly.
+
+***
+
+### Purpose of `__init__.py`
+
+The primary purpose of the `__init__.py` file is to make a directory a Python package. Without it, Python won't recognize the folder as a container for modules that can be imported. When you import a package, the `__init__.py` file is the first thing that's executed. 
+
+The file itself can be empty, but it can also be used to:
+
+* **Initialize the package:** You can use it to set up package-level variables or perform other setup tasks.
+* **Define `__all__`:** This special variable is a list of strings that defines what gets imported when a user does `from package_name import *`.
+* **Handle sub-imports:** You can use it to conveniently expose specific modules or functions from sub-packages, so users don't have to navigate deep into the package structure.
+
+***
+
+### How It Works
+
+When you run `import my_package`, Python searches for a directory named `my_package` and checks if it contains an `__init__.py` file.
+
+* **If the file exists:** Python treats the directory as a package and executes the code within `__init__.py`. You can then access modules inside that directory using `my_package.module_name`.
+* **If the file doesn't exist:** Python doesn't recognize the directory as a package, and you won't be able to import anything from it.
+
+In modern Python (versions 3.3 and later), explicit `__init__.py` files are not strictly required for a directory to be considered a package. However, they are still considered a **best practice** for compatibility with older versions and for defining the package's behavior as described above.
